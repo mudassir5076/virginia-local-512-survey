@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virginia Local 512 – Values & Culture Survey</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0d1f3c;
+  --navy2:   #162d52;
+  --gold:    #c9a84c;
+  --gold2:   #e8c96a;
+  --cream:   #faf8f3;
+  --white:   #ffffff;
+  --text:    #1a2a42;
+  --muted:   #5a6e8a;
+  --border:  #d8e2ef;
+  --green:   #1a6b4a;
+  --red:     #c0392b;
+  --shadow:  0 4px 24px rgba(13,31,60,0.10);
+  --shadow2: 0 8px 40px rgba(13,31,60,0.16);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HERO HEADER ─────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 60px 24px 72px;
+  text-align: center;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%);
+}
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.35);
+  color: var(--gold2);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  position: relative;
+  animation: fadeDown 0.6s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 8px;
+  position: relative;
+  animation: fadeDown 0.6s 0.1s ease both;
+}
+.hero h1 span {
+  color: var(--gold);
+  font-style: italic;
+}
+.hero-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 36px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  position: relative;
+  animation: fadeDown 0.6s 0.2s ease both;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  position: relative;
+  animation: fadeDown 0.6s 0.3s ease both;
+}
+.stat {
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+.hero-divider {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: var(--cream);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PROGRESS BAR ────────────────────────────────── */
+.progress-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 12px rgba(13,31,60,0.06);
+}
+.progress-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+.progress-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--navy), var(--gold));
+  border-radius: 99px;
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+.progress-pct {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ── MAIN LAYOUT ─────────────────────────────────── */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+}
+
+/* ── CONFIDENTIALITY BOX ─────────────────────────── */
+.confid-box {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.confid-box::after {
+  content: '🔒';
+  position: absolute;
+  right: 24px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  opacity: 0.08;
+}
+.confid-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.confid-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.confid-box ul li {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+.confid-box ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ── SECTION HEADER ──────────────────────────────── */
+.section-wrap {
+  margin-bottom: 40px;
+  animation: fadeUp 0.5s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+.section-icon {
+  width: 44px; height: 44px;
+  background: var(--navy);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.section-subtitle {
+  font-size: 0.83rem;
+  color: var(--muted);
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+/* ── QUESTION CARD ───────────────────────────────── */
+.qcard {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  position: relative;
+}
+.qcard:hover {
+  border-color: rgba(13,31,60,0.25);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+.qcard.answered {
+  border-color: var(--green);
+  background: linear-gradient(135deg, #f8fffc 0%, var(--white) 100%);
+}
+.qcard.answered::after {
+  content: '✓';
+  position: absolute;
+  top: 16px; right: 20px;
+  color: var(--green);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.qcard.error {
+  border-color: var(--red);
+  background: #fff8f8;
+  animation: shake 0.4s ease;
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+.qlabel {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.qnum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  background: var(--navy);
+  color: var(--gold);
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-right: 8px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* ── RADIO / CHECKBOX OPTIONS ────────────────────── */
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 0.9rem;
+  color: var(--text);
+  user-select: none;
+}
+.opt-item:hover { border-color: var(--navy); background: #f5f8ff; }
+.opt-item.selected {
+  border-color: var(--navy);
+  background: linear-gradient(135deg, #eef2ff 0%, #f5f8ff 100%);
+  color: var(--navy);
+  font-weight: 500;
+}
+.opt-item input { display: none; }
+.opt-dot {
+  width: 18px; height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.18s;
+  display: flex; align-items: center; justify-content: center;
+}
+.opt-item.selected .opt-dot {
+  border-color: var(--navy);
+  background: var(--navy);
+}
+.opt-item.selected .opt-dot::after {
+  content: '';
+  width: 7px; height: 7px;
+  background: white;
+  border-radius: 50%;
+}
+.opt-sq {
+  width: 18px; height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 5px;
+  flex-shrink: 0;
+  transition: all 0.18s;
+  display: flex; align-items: center; justify-content: center;
+}
+.opt-item.selected .opt-sq {
+  border-color: var(--navy);
+  background: var(--navy);
+}
+.opt-item.selected .opt-sq::after {
+  content: '✓';
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+/* ── LIKERT SCALE ────────────────────────────────── */
+.likert-wrap { overflow-x: auto; }
+.likert-labels {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 0;
+}
+.likert-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: center;
+  user-select: none;
+}
+.likert-item:hover { border-color: var(--navy); background: #f5f8ff; }
+.likert-item.selected {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: white;
+}
+.likert-item input { display: none; }
+.likert-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+.likert-item.selected .likert-num { color: var(--gold); }
+.likert-text {
+  font-size: 0.67rem;
+  color: var(--muted);
+  line-height: 1.3;
+  font-weight: 500;
+}
+.likert-item.selected .likert-text { color: rgba(255,255,255,0.75); }
+
+/* ── CULTURE GRID ────────────────────────────────── */
+.culture-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.culture-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy);
+  color: white;
+  padding: 6px 18px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+  letter-spacing: 0.02em;
+}
+.culture-counter.full { background: var(--green); }
+.culture-counter.over { background: var(--red); }
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 7px;
+}
+.c-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text);
+  transition: all 0.15s;
+  user-select: none;
+  line-height: 1.35;
+}
+.c-item:hover { border-color: var(--navy); background: #f5f8ff; }
+.c-item.selected {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: white;
+  font-weight: 500;
+}
+.c-item input { display: none; }
+.c-dot {
+  width: 14px; height: 14px;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  opacity: 0.5;
+}
+.c-item.selected .c-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  opacity: 1;
+}
+
+/* ── TEXTAREA ────────────────────────────────────── */
+.qtextarea {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  resize: vertical;
+  min-height: 110px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--white);
+  line-height: 1.6;
+}
+.qtextarea:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(13,31,60,0.08);
+}
+.qtextarea::placeholder { color: #b0bec5; }
+
+/* ── STATUS BANNER ───────────────────────────────── */
+.status-banner {
+  display: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  border-left: 4px solid;
+}
+.status-banner.error {
+  display: block;
+  background: #fff3f3;
+  border-color: var(--red);
+  color: var(--red);
+}
+.status-banner.success {
+  display: block;
+  background: #f0fff8;
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* ── SUBMIT BUTTON ───────────────────────────────── */
+.submit-wrap {
+  text-align: center;
+  padding: 32px 0 0;
+}
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  padding: 18px 56px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+}
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(201,168,76,0.2));
+}
+.submit-btn:hover {
+  background: var(--navy2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(13,31,60,0.25);
+}
+.submit-btn:active { transform: translateY(0); }
+.submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+.submit-note {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ── CONTACT BOX ─────────────────────────────────── */
+.contact-box {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.contact-person { flex: 1; min-width: 200px; }
+.contact-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.contact-detail {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ── THANK YOU PAGE ──────────────────────────────── */
+#thankyou {
+  display: none;
+  text-align: center;
+  padding: 80px 24px;
+  animation: fadeUp 0.6s ease both;
+}
+.ty-icon {
+  width: 80px; height: 80px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 28px;
+  box-shadow: 0 8px 32px rgba(13,31,60,0.2);
+}
+#thankyou h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+#thankyou p {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero { padding: 48px 16px 60px; }
+  .container { padding: 32px 14px 60px; }
+  .qcard { padding: 18px 16px; }
+  .likert-labels { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+  .likert-item { padding: 10px 4px; }
+  .likert-text { font-size: 0.58rem; }
+  .confid-box { padding: 20px; }
+  .culture-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .hero-stats { gap: 20px; }
+  .contact-box { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-lines"></div>
+  <div style="position:relative">
+    <div class="hero-badge">Confidential &amp; Anonymous Survey</div>
+    <h1>Values &amp; <span>Culture</span> Survey</h1>
+    <p class="hero-sub">Virginia Local 512 &nbsp;·&nbsp; Employee Feedback Initiative</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Parts</div></div>
+      <div class="stat"><div class="stat-num">~15</div><div class="stat-label">Minutes</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Anonymous</div></div>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <span class="progress-label">SURVEY PROGRESS</span>
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <span class="progress-pct" id="progressPct">0%</span>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+  <div id="surveyForm">
+
+    <!-- CONFIDENTIALITY -->
+    <div class="confid-box">
+      <h3>🔒 Your Privacy is Protected</h3>
+      <ul>
+        <li>All responses are completely anonymous and confidential</li>
+        <li>No identifying information will be collected or reported</li>
+        <li>Responses go directly to a third-party consultant — not viewed by anyone in the Local</li>
+        <li>All responses are combined to determine overall trends and themes only</li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-box">
+      <div class="contact-person">
+        <div class="contact-name">Debra Alexander</div>
+        <div class="contact-detail">📞 (757) 305-7913<br>✉ dalexander@alexanderacts.com</div>
+      </div>
+      <div class="contact-person">
+        <div class="contact-name">Geo Bowersmith</div>
+        <div class="contact-detail">📞 (202) 297-6378<br>✉ geo.bowersmith@gmail.com</div>
+      </div>
+    </div>
+
+    <div id="statusBanner" class="status-banner"></div>
+
+    <!-- PART I -->
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-icon">👤</div>
+        <div>
+          <div class="section-title">Part I — Demographics</div>
+          <div class="section-subtitle">Two quick questions about your role and tenure</div>
+        </div>
+      </div>
+
+      <div class="qcard" id="qcard-role">
+        <div class="qlabel"><span class="qnum">1</span>Please select the one role which best describes you.</div>
+        <div class="opts" id="opts-role">
+          <label class="opt-item"><input type="radio" name="role" value="Managers and Supervisors"><span class="opt-dot"></span>Managers and Supervisors</label>
+          <label class="opt-item"><input type="radio" name="role" value="Staff"><span class="opt-dot"></span>Staff</label>
+        </div>
+      </div>
+
+      <div class="qcard" id="qcard-tenure">
+        <div class="qlabel"><span class="qnum">2</span>How long have you worked at Virginia Local 512?</div>
+        <div class="opts" id="opts-tenure">
+          <label class="opt-item"><input type="radio" name="tenure" value="Less than 3 years"><span class="opt-dot"></span>Less than 3 years</label>
+          <label class="opt-item"><input type="radio" name="tenure" value="More than 3 years"><span class="opt-dot"></span>More than 3 years</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART II -->
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-icon">📊</div>
+        <div>
+          <div class="section-title">Part II — Employee Engagement</div>
+          <div class="section-subtitle">Rate each statement: 1 = Strongly Disagree &nbsp;·&nbsp; 5 = Strongly Agree</div>
+        </div>
+      </div>
+      <div id="engagementQuestions"></div>
+    </div>
+
+    <!-- PART III-A -->
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-icon">🌟</div>
+        <div>
+          <div class="section-title">Part III-A — Current Culture</div>
+          <div class="section-subtitle">Select exactly 10 words that describe your current experience</div>
+        </div>
+      </div>
+      <div class="qcard" id="qcard-current">
+        <div class="culture-header">
+          <div class="qlabel" style="margin-bottom:0">Select your <strong>TOP 10</strong> descriptors of your <em>current</em> experience:</div>
+          <div class="culture-counter" id="currentCounter">0 of 10 selected</div>
+        </div>
+        <div class="culture-grid" id="currentCulture"></div>
+        <div style="margin-top:16px">
+          <div style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;font-weight:500">Additional word or phrase (optional):</div>
+          <textarea class="qtextarea" name="currentOther" rows="2" placeholder="Add any word not listed above…" style="min-height:60px"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART III-B -->
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-icon">✨</div>
+        <div>
+          <div class="section-title">Part III-B — Desired Culture</div>
+          <div class="section-subtitle">Select exactly 10 words describing the culture you want</div>
+        </div>
+      </div>
+      <div class="qcard" id="qcard-desired">
+        <div class="culture-header">
+          <div class="qlabel" style="margin-bottom:0">Select your <strong>TOP 10</strong> descriptors of Virginia Local 512 as you <em>desire it to be</em>:</div>
+          <div class="culture-counter" id="desiredCounter">0 of 10 selected</div>
+        </div>
+        <div class="culture-grid" id="desiredCulture"></div>
+        <div style="margin-top:16px">
+          <div style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;font-weight:500">Additional word or phrase (optional):</div>
+          <textarea class="qtextarea" name="desiredOther" rows="2" placeholder="Add any word not listed above…" style="min-height:60px"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART III-C -->
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-icon">☑️</div>
+        <div>
+          <div class="section-title">Part III-C — Workplace Statements</div>
+          <div class="section-subtitle">Check all statements that are true for you</div>
+        </div>
+      </div>
+      <div class="qcard">
+        <div class="qlabel">Which of the following statements are true for you? <span style="color:var(--muted);font-weight:400">(Check all that apply)</span></div>
+        <div class="opts" id="sectionCItems"></div>
+      </div>
+    </div>
+
+    <!-- PART IV -->
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-icon">💬</div>
+        <div>
+          <div class="section-title">Part IV — Open Feedback</div>
+          <div class="section-subtitle">All questions optional — be as specific as you like</div>
+        </div>
+      </div>
+
+      <div class="qcard">
+        <div class="qlabel"><span class="qnum">E</span>What else do you want us to know about the Local? <span style="color:var(--muted);font-weight:400">(culture, behavior, turnover — positive or negative)</span></div>
+        <textarea class="qtextarea" name="sectionE" placeholder="Your thoughts…"></textarea>
+      </div>
+      <div class="qcard">
+        <div class="qlabel"><span class="qnum">F</span>What else do you want us to know about your personal experience? <span style="color:var(--muted);font-weight:400">(stress, workload, positive experiences)</span></div>
+        <textarea class="qtextarea" name="sectionF" placeholder="Your thoughts…"></textarea>
+      </div>
+      <div class="qcard">
+        <div class="qlabel"><span class="qnum">G</span>What do you see as most important to <strong>start, stop, or continue?</strong> Please be specific.</div>
+        <textarea class="qtextarea" name="sectionG" placeholder="Your suggestions…"></textarea>
+      </div>
+      <div class="qcard">
+        <div class="qlabel"><span class="qnum">H</span>If there was <strong>one action</strong> that could make a meaningful improvement, what would you suggest?</div>
+        <textarea class="qtextarea" name="sectionH" placeholder="Your recommendation…"></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-wrap">
+      <button class="submit-btn" id="submitBtn" onclick="submitSurvey()">
+        Submit My Survey &nbsp;→
+      </button>
+      <div class="submit-note">🔒 Your responses are anonymous and cannot be traced back to you</div>
+    </div>
+
+  </div><!-- /surveyForm -->
+
+  <!-- THANK YOU -->
+  <div id="thankyou">
+    <div class="ty-icon">✓</div>
+    <h2>Thank You!</h2>
+    <p>Your survey has been submitted successfully. Your anonymous feedback will help shape the future of Virginia Local 512. We appreciate your time and honesty.</p>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ═══════════════════════════════════════════════
+//  FORMSPREE SETUP
+//  1. Go to formspree.io → sign up free
+//  2. Click + New Form → copy your Form ID
+//  3. Replace YOUR_FORM_ID_HERE below
+// ═══════════════════════════════════════════════
+const FORMSPREE_ID = 'xgonyoan';
+
+// ── DATA ─────────────────────────────────────────
+const engageQuestions = [
+    'I know what is expected of me at work.',
+    'I have the materials and equipment I need to do my work right.',
+    'At work, I have the opportunity to do what I do best every day.',
+    'In the last seven days, I have received recognition or praise for doing good work.',
+    'My supervisor, or someone at work, seems to care about me as a person.',
+    'There is someone at work who encourages my development.',
+    'At work, my opinions seem to count.',
+    'The mission/purpose of my organization makes me feel my job is important.',
+    'My co-workers are committed to doing quality work.',
+    'I have someone at work who I can confide in and trust.',
+    'In the last six months, someone has talked to me about my progress.',
+    'In the last year, I have had opportunities at work to learn and grow.'
+];
+
+const cultureDescriptors = [
+    'Accountability','Adequate Resources','Appreciative','Authentic','Belonging',
+    'Build Power','Burn-out/Overload','Caring Deeply/Compassion','Challenging/Difficult',
+    'Clear Goals','Collaboration','Comfortable','Committed','Community','Competent',
+    'Complex/Complicated','Confusing/Confusion','Conflict','Consistent',
+    'Continually Improving','Courageous','Dedicated Staff','Determined',
+    'Discrimination/Bias','Diverse','Dysfunctional','Effective','Efficient',
+    'Employees Valued','Empowering','Engaging','Equitable/Fair','Ethical/Principled',
+    'Excellence/High Quality','Family Friendly','Favoritism',
+    'Fight for Members/Advocacy','Flexibility','Friendly/Welcoming','Fun',
+    'Gives "Grace"/Forgiving','Good Benefits','Good Communications',
+    'Good Morale/Job Satisfaction','Good Work Relationships','Hard Working/Work Ethic',
+    'High Performing','Hostile/Toxic Environment','Inclusive','Innovation/Creativity',
+    'Inspiring','Integrity/Honesty','Intentional','Isolated/Lonely','Just',
+    'Knowledge Sharing','Leading in Field','Loyalty','Making a Difference/Impactful',
+    'Member Focused/Prioritized','Micro-managing','Old Fashioned/Behind the Times',
+    'Opportunities to Learn/Grow','Optimistic/Hopeful','Orderly/Organized',
+    'Passionate','Predictability','Proactive','Pride/Proud','Protected','Reactive',
+    'Realistic Workload','Repeat Past Mistakes','Resilience','Resourceful',
+    'Respect for All','Respected Reputation','Retaliation/Retribution','Rewarding',
+    'Responsible','Responsive','Rigid/Restrictive','Role Clarity','Safe','Security',
+    'See Something/Say Something','Sharing','Silos','Slow to Change/Status Quo',
+    'Solidarity','Speak Up/Speak Out','Stable/Stability','Strategic','Stressful',
+    'Strong','Successful','Supportive/Encouraging','Talented Workforce',
+    'Technology Savvy','Teamwork','Traditional','Transparency','Trust','Turnover',
+    'United/Cohesive','Up to Date','Values-Driven','Well Managed/Good Leaders',
+    'Wellness/Well-being','Work/Life Balance'
+];
+
+const sectionCStatements = [
+    { key:'c1', text:'I understand how my performance will be evaluated.' },
+    { key:'c2', text:'I am satisfied with my work/life balance.' },
+    { key:'c3', text:'I am comfortable approaching my supervisor, or someone at work with work-related concerns.' },
+    { key:'c4', text:'The workplace culture promotes professionalism and respect.' },
+    { key:'c5', text:'My supervisor, or someone at work, understands my work and provides support and feedback.' },
+    { key:'c6', text:'I am comfortable raising concerns and issues without fear of negative consequences.' },
+    { key:'c7', text:'I have a good working relationship with my manager.' },
+    { key:'c8', text:'There is a good working relationship between management and staff.' }
+];
+
+// ── STATE ─────────────────────────────────────────
+let currentSelected = [];
+let desiredSelected = [];
+let answeredCount   = 0;
+const totalRequired = 16; // 2 demo + 12 engage + 2 culture
+
+// ── PROGRESS ─────────────────────────────────────
+function updateProgress() {
+    let count = 0;
+    if (document.querySelector('input[name="role"]:checked')) count++;
+    if (document.querySelector('input[name="tenure"]:checked')) count++;
+    for (let i = 1; i <= 12; i++) {
+        if (document.querySelector('input[name="engage' + i + '"]:checked')) count++;
+    }
+    if (currentSelected.length === 10) count++;
+    if (desiredSelected.length === 10) count++;
+    const pct = Math.round((count / totalRequired) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent  = pct + '%';
+}
+
+// ── BUILD ENGAGEMENT ──────────────────────────────
+const engContainer = document.getElementById('engagementQuestions');
+engageQuestions.forEach(function(q, i) {
+    const num = i + 1;
+    const div = document.createElement('div');
+    div.className = 'qcard';
+    div.id = 'qcard-engage' + num;
+    const scale = [
+        ['1','Strongly<br>Disagree'],
+        ['2','Disagree'],
+        ['3','Neither'],
+        ['4','Agree'],
+        ['5','Strongly<br>Agree']
+    ];
+    const items = scale.map(function(p) {
+        return '<label class="likert-item" id="lopt' + num + '_' + p[0] + '">' +
+               '<input type="radio" name="engage' + num + '" value="' + p[0] + '">' +
+               '<span class="likert-num">' + p[0] + '</span>' +
+               '<span class="likert-text">' + p[1] + '</span></label>';
+    }).join('');
+    div.innerHTML =
+        '<div class="qlabel"><span class="qnum">' + num + '</span>' + q + '</div>' +
+        '<div class="likert-wrap"><div class="likert-labels">' + items + '</div></div>';
+    engContainer.appendChild(div);
+});
+
+// ── BUILD CULTURE GRIDS ───────────────────────────
+function buildCultureGrid(containerId, selectedArr, counterId) {
+    const container = document.getElementById(containerId);
+    cultureDescriptors.forEach(function(d) {
+        const label = document.createElement('label');
+        label.className = 'c-item';
+        label.innerHTML = '<input type="checkbox" value="' + d + '"><span class="c-dot"></span>' + d;
+        label.querySelector('input').addEventListener('change', function() {
+            handleCulture(this, selectedArr, counterId, label);
+        });
+        container.appendChild(label);
+    });
+}
+
+function handleCulture(cb, arr, counterId, label) {
+    const counter = document.getElementById(counterId);
+    if (cb.checked) {
+        if (arr.length >= 10) {
+            cb.checked = false;
+            counter.className = 'culture-counter over';
+            counter.textContent = 'Maximum 10 reached!';
+            setTimeout(function() {
+                counter.className = 'culture-counter full';
+                counter.textContent = '10 of 10 selected';
+            }, 2000);
+            return;
+        }
+        arr.push(cb.value);
+        label.classList.add('selected');
+    } else {
+        const idx = arr.indexOf(cb.value);
+        if (idx > -1) arr.splice(idx, 1);
+        label.classList.remove('selected');
+    }
+    counter.textContent = arr.length + ' of 10 selected';
+    if (arr.length === 10) {
+        counter.className = 'culture-counter full';
+    } else {
+        counter.className = 'culture-counter';
+    }
+    updateProgress();
+}
+
+buildCultureGrid('currentCulture', currentSelected, 'currentCounter');
+buildCultureGrid('desiredCulture', desiredSelected, 'desiredCounter');
+
+// ── BUILD SECTION C ───────────────────────────────
+const scContainer = document.getElementById('sectionCItems');
+sectionCStatements.forEach(function(stmt) {
+    const label = document.createElement('label');
+    label.className = 'opt-item';
+    label.innerHTML = '<input type="checkbox" name="sectionC" value="' + stmt.key + '">' +
+                      '<span class="opt-sq"></span>' + stmt.text;
+    scContainer.appendChild(label);
+});
+
+// ── RADIO/CHECKBOX VISUAL STATE ───────────────────
+document.addEventListener('change', function(e) {
+    if (e.target.type === 'radio') {
+        const nm = e.target.name;
+        document.querySelectorAll('input[name="' + nm + '"]').forEach(function(r) {
+            const el = r.closest('.opt-item') || r.closest('.likert-item');
+            if (el) el.classList.remove('selected');
+        });
+        const closest = e.target.closest('.opt-item') || e.target.closest('.likert-item');
+        if (closest) { closest.classList.add('selected'); }
+        const card = e.target.closest('.qcard');
+        if (card) card.classList.add('answered');
+        updateProgress();
+    }
+    if (e.target.name === 'sectionC') {
+        const el = e.target.closest('.opt-item');
+        if (el) el.classList.toggle('selected', e.target.checked);
+    }
+});
+
+// ── BANNER ────────────────────────────────────────
+function showBanner(msg, type) {
+    const b = document.getElementById('statusBanner');
+    b.className = 'status-banner ' + type;
+    b.textContent = msg;
+    b.style.display = 'block';
+    b.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+// ── HIGHLIGHT ─────────────────────────────────────
+function highlight(id) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.classList.add('error');
+        el.scrollIntoView({ behavior:'smooth', block:'center' });
+        setTimeout(function() { el.classList.remove('error'); }, 3000);
+    }
+}
+
+// ── SUBMIT ────────────────────────────────────────
+function submitSurvey() {
+    const role   = document.querySelector('input[name="role"]:checked');
+    const tenure = document.querySelector('input[name="tenure"]:checked');
+    if (!role)   { highlight('qcard-role');   showBanner('Please select your role (Part I, Q1).', 'error'); return; }
+    if (!tenure) { highlight('qcard-tenure'); showBanner('Please select your tenure (Part I, Q2).', 'error'); return; }
+
+    const engagement = {};
+    for (let i = 1; i <= 12; i++) {
+        const ans = document.querySelector('input[name="engage' + i + '"]:checked');
+        if (!ans) {
+            highlight('qcard-engage' + i);
+            showBanner('Please answer Engagement Question ' + i + ' (Part II).', 'error');
+            return;
+        }
+        engagement['question' + i] = parseInt(ans.value);
+    }
+
+    if (currentSelected.length !== 10) {
+        highlight('qcard-current');
+        showBanner('Please select exactly 10 Current Culture descriptors. You have selected ' + currentSelected.length + '.', 'error');
+        return;
+    }
+    if (desiredSelected.length !== 10) {
+        highlight('qcard-desired');
+        showBanner('Please select exactly 10 Desired Culture descriptors. You have selected ' + desiredSelected.length + '.', 'error');
+        return;
+    }
+
+    const sectionCData = {};
+    sectionCStatements.forEach(function(s) { sectionCData[s.key] = false; });
+    document.querySelectorAll('input[name="sectionC"]:checked').forEach(function(cb) {
+        sectionCData[cb.value] = true;
+    });
+
+    if (FORMSPREE_ID === 'YOUR_FORM_ID_HERE') {
+        showBanner('Setup needed: Add your Formspree Form ID to this file (see instructions at top of code).', 'error');
+        return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    const payload = {
+        _subject:              'New Survey Response – Virginia Local 512',
+        submitted_at:          new Date().toISOString(),
+        role:                  role.value,
+        tenure:                tenure.value,
+        engage_q1:  engagement.question1,  engage_q2:  engagement.question2,
+        engage_q3:  engagement.question3,  engage_q4:  engagement.question4,
+        engage_q5:  engagement.question5,  engage_q6:  engagement.question6,
+        engage_q7:  engagement.question7,  engage_q8:  engagement.question8,
+        engage_q9:  engagement.question9,  engage_q10: engagement.question10,
+        engage_q11: engagement.question11, engage_q12: engagement.question12,
+        current_culture:       currentSelected.join(', '),
+        current_culture_other: document.querySelector('textarea[name="currentOther"]').value.trim(),
+        desired_culture:       desiredSelected.join(', '),
+        desired_culture_other: document.querySelector('textarea[name="desiredOther"]').value.trim(),
+        c1_perf_eval:       sectionCData.c1 ? 'Yes' : 'No',
+        c2_work_life:       sectionCData.c2 ? 'Yes' : 'No',
+        c3_comfort_supv:    sectionCData.c3 ? 'Yes' : 'No',
+        c4_culture_respect: sectionCData.c4 ? 'Yes' : 'No',
+        c5_supv_support:    sectionCData.c5 ? 'Yes' : 'No',
+        c6_raise_concerns:  sectionCData.c6 ? 'Yes' : 'No',
+        c7_mgr_relation:    sectionCData.c7 ? 'Yes' : 'No',
+        c8_mgmt_staff:      sectionCData.c8 ? 'Yes' : 'No',
+        e_local_culture:    document.querySelector('textarea[name="sectionE"]').value.trim(),
+        f_your_experience:  document.querySelector('textarea[name="sectionF"]').value.trim(),
+        g_start_stop_cont:  document.querySelector('textarea[name="sectionG"]').value.trim(),
+        h_one_action:       document.querySelector('textarea[name="sectionH"]').value.trim()
+    };
+
+    fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(function(res) {
+        if (res.ok) {
+            document.getElementById('surveyForm').style.display = 'none';
+            document.getElementById('thankyou').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            return res.json().then(function(d) { throw new Error(d.error || 'Submission failed'); });
+        }
+    })
+    .catch(function(err) {
+        btn.disabled = false;
+        btn.textContent = 'Submit My Survey →';
+        showBanner('There was an error submitting. Please try again. (' + err.message + ')', 'error');
+    });
+}
+
+updateProgress();
+</script>
+</body>
+</html>
